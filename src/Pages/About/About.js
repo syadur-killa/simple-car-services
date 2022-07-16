@@ -11,7 +11,7 @@ const About = () => {
     <div>
       <PageTitle title="About"></PageTitle>
       <div className="m-5">
-        <span>Test the button</span>
+        <span className="display-1">Test the button</span>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
           commodi beatae at obcaecati consequuntur distinctio aliquid, optio
@@ -20,6 +20,10 @@ const About = () => {
           voluptas officiis, adipisci harum reprehenderit, illum iusto totam
           nobis cupiditate accusamus quia at.
         </p>
+        <blockquote className="blockquote">
+  <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <footer className="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+</blockquote>
       </div>
 
       <Accordion defaultActiveKey="0">

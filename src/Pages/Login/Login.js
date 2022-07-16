@@ -1,27 +1,31 @@
 import React from "react";
 import { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import auth from "../../firebase.init";
 import Sociallogin from "./Sociallogin/Sociallogin";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Loadding from "../Home/Loadding/Loadding";
+import PageTitle from "../Shared/PageTitle/PageTitle";
 
 const Login = () => {
-    const emailRef = useRef("");
-    const passwordRef = useRef("");
-    const navigate = useNavigate();
-    const location = useLocation()
-    let errorElement;
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  let errorElement;
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
-    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
-        auth
-      );
-
-const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
 
   const handelSubmit = (event) => {
     event.preventDefault();
@@ -32,30 +36,33 @@ const from = location.state?.from?.pathname || "/";
   };
 
   if (user) {
-    navigate(from, {replace: true});
+    navigate(from, { replace: true });
+  }
+  if (loading) {
+    return <Loadding />;
   }
 
   if (error) {
-    errorElement = 
+    errorElement = (
       <div>
         <p className="text-danger">Error: {error?.message}</p>
       </div>
+    );
   }
 
   const resetPassword = async () => {
     const email = emailRef.current.value;
     if (email) {
-        await sendPasswordResetEmail(email);
-        alert('Sent email');
+      await sendPasswordResetEmail(email);
+      toast("Sent email");
+    } else {
+      toast("please enter your email address");
     }
-    else{
-        alert('please enter your email address');
-    }
-}
-
+  };
 
   return (
     <div className="container w-50 mx-auto">
+      <PageTitle title="Login"></PageTitle>
       <h2 className="text-primary">Please Login</h2>
       <Form onSubmit={handelSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -95,10 +102,18 @@ const from = location.state?.from?.pathname || "/";
         </Link>
       </p>
 
-      <p>Forget Password? <button className='btn btn-link text-primary pe-auto text-decoration-none' onClick={resetPassword}>Reset Password</button> </p>
+      <p>
+        Forget Password?{" "}
+        <button
+          className="btn btn-link text-primary pe-auto text-decoration-none"
+          onClick={resetPassword}
+        >
+          Reset Password
+        </button>{" "}
+      </p>
 
-      
-      <Sociallogin/>
+      <Sociallogin />
+      <ToastContainer />
     </div>
   );
 };

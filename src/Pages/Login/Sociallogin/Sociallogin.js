@@ -2,23 +2,30 @@ import React from "react";
 import google from "../../../images/social/google.png";
 import facebook from "../../../images/social/facebook.png";
 import github from "../../../images/social/github.png";
-import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useSignInWithFacebook,
+  useSignInWithGithub,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { useNavigate } from "react-router-dom";
 
 const Sociallogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  const [signInWithFacebook, user1, loading1, error1] = useSignInWithFacebook(auth);
+  const [signInWithFacebook, user1, loading1, error1] =
+    useSignInWithFacebook(auth);
   const [signInWithGithub, user2, loading2, error2] = useSignInWithGithub(auth);
   const navigate = useNavigate();
   let errorElement;
 
   if (error || error2) {
-    errorElement = 
+    errorElement = (
       <div>
-        <p className="text-danger">Error: {error?.message} {error2?.message}</p>
+        <p className="text-danger">
+          Error: {error?.message} {error2?.message}
+        </p>
       </div>
-
+    );
   }
   if (loading) {
     return <p>Loading...</p>;
@@ -26,7 +33,6 @@ const Sociallogin = () => {
   if (user) {
     navigate("/home");
   }
-
   return (
     <div>
       <div className="d-flex align-items-center justify-content-center">
@@ -42,16 +48,17 @@ const Sociallogin = () => {
           <img style={{ height: "30px" }} src={google} alt="" />
           <span className="mx-2 font-weight-bold">Google Sign In</span>
         </button>
-
-        <button className="btn btn-info w-50 mx-auto d-block mt-2"
-        onClick={() => signInWithFacebook()}>
+        <button
+          className="btn btn-info w-50 mx-auto d-block mt-2"
+          onClick={() => signInWithFacebook()}
+        >
           <img style={{ height: "30px" }} src={facebook} alt="" />
           <span className="mx-2 font-weight-bold">Facebook Sign In</span>
         </button>
-
         <button
-        onClick={() => signInWithGithub()}
-         className="btn btn-primary w-50 mx-auto d-block mt-2">
+          onClick={() => signInWithGithub()}
+          className="btn btn-primary w-50 mx-auto d-block mt-2"
+        >
           <img style={{ height: "30px" }} src={github} alt="" />
           <span className="mx-2 font-weight-bold">Github Sign In</span>
         </button>

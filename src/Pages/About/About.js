@@ -10,8 +10,18 @@ const About = () => {
   return (
     <div>
       <PageTitle title="About"></PageTitle>
-      <div>Test the button </div>
-      
+      <div className="m-5">
+        <span>Test the button</span>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+          commodi beatae at obcaecati consequuntur distinctio aliquid, optio
+          quis velit saepe vitae quas nemo, laboriosam veniam vel quasi autem,
+          eveniet nulla rem! Illo eligendi temporibus totam. Magni nulla
+          voluptas officiis, adipisci harum reprehenderit, illum iusto totam
+          nobis cupiditate accusamus quia at.
+        </p>
+      </div>
+
       <Accordion defaultActiveKey="0">
         <Accordion.Item eventKey="0">
           <Accordion.Header>Accordion Item #1</Accordion.Header>

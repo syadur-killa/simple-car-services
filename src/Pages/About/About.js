@@ -10,6 +10,8 @@ const About = () => {
   return (
     <div>
       <PageTitle title="About"></PageTitle>
+      <div>Test the button </div>
+      
       <Accordion defaultActiveKey="0">
         <Accordion.Item eventKey="0">
           <Accordion.Header>Accordion Item #1</Accordion.Header>

@@ -21,9 +21,20 @@ const About = () => {
           nobis cupiditate accusamus quia at.
         </p>
         <blockquote className="blockquote">
-  <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer className="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
+          <p className="mb-0">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            posuere erat a ante.
+          </p>
+          <footer className="blockquote-footer">
+            Someone famous in <cite title="Source Title">Source Title</cite>
+          </footer>
+        </blockquote>
+      </div>
+
+      <div className="text-center">
+        <h1>Service is the First</h1>
+        <p>lorem50
+        </p>
       </div>
 
       <Accordion defaultActiveKey="0">

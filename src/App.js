@@ -1,11 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./Pages/About/About";
+import AddService from "./Pages/AddService/AddService";
+import Checkout from "./Pages/Home/Checkout/Checkout";
 import Home from "./Pages/Home/Home/Home";
 import Services from "./Pages/Home/Services/Services";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Login/Register";
 import RequireAuth from "./Pages/Login/RequirAuth/RequirAuth";
+import ManageServices from "./Pages/ManageServices/ManageServices";
 import ServiceDeatail from "./Pages/ServiceDeatail/ServiceDeatail";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Header from "./Pages/Shared/Header/Header";
@@ -16,28 +19,38 @@ function App() {
     <div>
       <Header></Header>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <RequireAuth>
-              <Home></Home>
-            </RequireAuth>
-          }
-        ></Route>
-        <Route
-          path="/home"
-          element={
-            <RequireAuth>
-              <Home></Home>
-            </RequireAuth>
-          }
-        ></Route>
+        <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/service/:serviceId" element={<ServiceDeatail />}></Route>
         <Route
           path="/about"
           element={
             <RequireAuth>
               <About></About>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/checkout"
+          element={
+            <RequireAuth>
+              <Checkout />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/addservice"
+          element={
+            <RequireAuth>
+              <AddService />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/manageservices"
+          element={
+            <RequireAuth>
+              <ManageServices />
             </RequireAuth>
           }
         ></Route>

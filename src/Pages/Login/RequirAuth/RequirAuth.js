@@ -10,7 +10,6 @@ import { Toast } from "react-bootstrap";
 
 const RequireAuth = ({ children }) => {
   const [user, loading] = useAuthState(auth);
-  console.log("Inside requir auth", user);
   const location = useLocation();
   const [sendEmailVerification, sending, error] =
     useSendEmailVerification(auth);
